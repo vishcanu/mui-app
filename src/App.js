@@ -179,10 +179,10 @@ function App() {
                       </TableCell>
                       <TableCell>{dataEntry.study_material}</TableCell>
                       <TableCell>
-                        <IconButton>
+                        <IconButton style={{width:'20px',height:'20px',color:'blue'}}>
                           <FileDownloadRoundedIcon />
                         </IconButton>
-                        {dataEntry.assessment}
+                        {dataEntry.asssessment}
                       </TableCell>
                     </TableRow>
                   ))}
