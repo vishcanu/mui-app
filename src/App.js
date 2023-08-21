@@ -28,9 +28,9 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     tableFilter();
-  },[filterClassNo,filterTopic,selectedDate]);
+  }, [filterClassNo, filterTopic, selectedDate]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -51,33 +51,36 @@ function App() {
     setPage(0);
   };
 
-  const filterDate =(e) =>{
-    let newdate = new Date(e.$d) ;
-    setSelectedDate(e.$d)
-    
-  }
-  const dateFilter =( filteredData)=>{
+  const filterDate = (e) => {
+    let newdate = new Date(e.$d);
+    setSelectedDate(e.$d);
+  };
+  const dateFilter = (filteredData) => {
     const filteredDataByMonth = filteredData.filter((data) => {
       if (!selectedDate) return true;
-  
+
       const selectedYear = selectedDate.getFullYear();
       const selectedMonth = selectedDate.getMonth();
-  
+
       const entryDate = new Date(data.date);
       const entryYear = entryDate.getFullYear();
       const entryMonth = entryDate.getMonth();
-  
+
       return selectedYear === entryYear && selectedMonth === entryMonth;
     });
     setFilteredData(filteredDataByMonth);
-  }
-  const tableFilter =() =>{
-    dateFilter(dummyData.filter(
-      (dataEntry) =>
-        dataEntry.class_No.toLowerCase().includes(filterClassNo.toLowerCase()) &&
-        dataEntry.topic.toLowerCase().includes(filterTopic.toLowerCase())
-  ))
-  } 
+  };
+  const tableFilter = () => {
+    dateFilter(
+      dummyData.filter(
+        (dataEntry) =>
+          dataEntry.class_No
+            .toLowerCase()
+            .includes(filterClassNo.toLowerCase()) &&
+          dataEntry.topic.toLowerCase().includes(filterTopic.toLowerCase())
+      )
+    );
+  };
   return (
     <Box>
       <Card style={{ padding: "5px" }}>
@@ -86,12 +89,9 @@ function App() {
             <Grid item>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label={'Select Month and Year'}
-                  views={['month','year']}
+                  label={"Select Month and Year"}
+                  views={["month", "year"]}
                   onChange={filterDate}
-                  
-                  
-                  
                 />
               </LocalizationProvider>
             </Grid>
@@ -208,7 +208,13 @@ function App() {
                       </TableCell>
                       <TableCell>{dataEntry.study_material}</TableCell>
                       <TableCell>
-                        <IconButton style={{width:'20px',height:'20px',color:'blue'}}>
+                        <IconButton
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            color: "blue",
+                          }}
+                        >
                           <FileDownloadRoundedIcon />
                         </IconButton>
                         {dataEntry.asssessment}
