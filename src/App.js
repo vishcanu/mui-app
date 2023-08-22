@@ -18,6 +18,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
+import Divider from '@mui/material/Divider';
+
 
 function App() {
   const rowsPerPageOptions = [10, 20];
@@ -116,6 +118,7 @@ function App() {
           </Grid>
         </CardContent>
       </Card>
+      <Divider />
       <Card>
         <CardContent>
           <TableContainer style={{ borderRadius: "5px" }}>
